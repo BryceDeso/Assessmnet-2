@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using MathLibrary;
+using Raylib_cs;
 
 namespace HelloWorld
 {
@@ -16,6 +17,8 @@ namespace HelloWorld
         protected Vector2 _acceleration;
         protected float _collisionRadius;
         protected float _maxSpeed;
+        protected char _icon;
+        protected Color _raycolor;
 
         public Vector2 Forward
         {
@@ -88,6 +91,65 @@ namespace HelloWorld
             }
         }
 
+        public Actor(float x, float y, Color raycolor, char icon = ' ')
+        {
+            _raycolor = raycolor;
+            _icon = icon;
+            _localTransform = new Matrix3();
+            LocalPosition = new Vector2(x, y);
+            _velocity = new Vector2();
+            _rotation = new Matrix3();
+            _scale = new Matrix3();
+            _translation = new Matrix3();
+        }
+
+        public void LookAt(Vector2 position)
+        {
+            Vector2 direction = (position - LocalPosition).Normalized;
+
+            float dotProd = Vector2.DotProduct(Forward, direction);
+            if (Math.Abs(dotProd) > 1)
+            {
+                return;
+            }
+
+            float angle = (float)Math.Acos(dotProd);
+
+            Vector2 perp = new Vector2(direction.X, direction.Y);
+
+            float perpDot = Vector2.DotProduct(perp, Forward);
+
+            if(perpDot != 0)
+            {
+                angle *= -perpDot / Math.Abs(perpDot);
+            }
+        }
+
+        public bool CheckCollision(Actor other)
+        {
+            float distance = (other.WorldPositon - WorldPositon).Magnitude;
+            return distance <= other._collisionRadius + _collisionRadius;
+        }
+
+        public void OnCollision()
+        {
+
+        }
+
+        public void SetTranslation(Vector2 position)
+        {
+            _translation = Matrix3.CreateTranslation(position);
+        }
+
+        public void SetRotation(float radians)
+        {
+            _rotation = Matrix3.CreateRotation(radians);
+        }
+
+        public void SetScale(float x, float y)
+        {
+            _scale = Matrix3.CreateScale(new Vector2(x, y));
+        }
 
     }
 }

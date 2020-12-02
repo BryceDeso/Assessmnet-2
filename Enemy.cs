@@ -29,8 +29,16 @@ namespace HelloWorld
 
         public override void OnCollision(Actor other)
         {
-
+            if(other is Player)
+            {
+                DrawLoseText();
+                Game.SetGameOver(true);                
+            }
         }
 
+        public void DrawLoseText()
+        {
+            Raylib.DrawText("You lose!\nPress esc to quit!", 10, 15, 4, Color.BLUE);
+        }
     }
 }

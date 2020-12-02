@@ -40,7 +40,7 @@ namespace HelloWorld
         }
 
         //Repeated until the game ends
-        public void Update()
+        public void Update(float deltatime)
         {
             
         }

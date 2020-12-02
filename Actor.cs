@@ -128,13 +128,55 @@ namespace HelloWorld
             }
         }
 
+        public void AddChildActor(Actor child)
+        {
+            Actor[] newArray = new Actor[_children.Length + 1];
+            for(int i = 0; i < _children.Length; i++)
+            {
+                newArray[i] = _children[i];
+            }
+
+            newArray[_children.Length] = child;
+            _children = newArray;
+            child._parent = this;
+        }
+
+        public bool RemoveChildActor(Actor child)
+        {
+            bool childRemoved = false;
+            if(child == null)
+            {
+                childRemoved = false;
+            }
+
+            Actor[] newArray = new Actor[_children.Length - 1];
+
+            int j = 0;
+            for(int i = 0; i < _children.Length; i++)
+            {
+                if(child != _children[i])
+                {
+                    j++;
+                    newArray[j] = _children[i];                    
+                }
+                else
+                {
+                    childRemoved = true;
+                }
+
+                _children = newArray;
+                child._parent = null;
+            }
+            return childRemoved;
+        }
+
         public bool CheckCollision(Actor other)
         {
             float distance = (other.WorldPosition - WorldPosition).Magnitude;
             return distance <= other._collisionRadius + _collisionRadius;
         }
 
-        public void OnCollision()
+        public virtual void OnCollision(Actor other)
         {
 
         }

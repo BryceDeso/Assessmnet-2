@@ -7,7 +7,46 @@ using Raylib_cs;
 namespace HelloWorld
 {
     public class Player : Actor
-    { 
-        
+    {
+        private float _speed = 1;
+
+        public float Speed
+        {
+            get
+            {
+                return _speed;
+            }
+            set
+            {
+                _speed = value;
+            }
+        }
+
+        public Player(float x, float y, Color raycolor, char icon = ' ') : base(x, y, raycolor, icon = ' ')
+        {
+
+        }
+
+        public override void Start()
+        {
+
+        }
+
+        public override void Update(float deltaTime)
+        {
+            int xDirection = -Convert.ToInt32(Game.GetKeyDown((int)KeyboardKey.KEY_LEFT))
+               + Convert.ToInt32(Game.GetKeyDown((int)KeyboardKey.KEY_RIGHT));
+            int yDirection = -Convert.ToInt32(Game.GetKeyDown((int)KeyboardKey.KEY_UP))
+                + Convert.ToInt32(Game.GetKeyDown((int)KeyboardKey.KEY_DOWN));
+
+            Acceleration = new Vector2(xDirection, yDirection);
+
+            base.Update(deltaTime);
+        }
+
+        public override void Draw()
+        {
+          
+        }
     }
 }

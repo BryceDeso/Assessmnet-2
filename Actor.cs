@@ -15,10 +15,13 @@ namespace HelloWorld
         protected Matrix3 _translation;
         protected Vector2 _velocity;
         protected Vector2 _acceleration;
+        protected Actor[] _children;
+        protected Actor _parent;
         protected float _collisionRadius;
         protected float _maxSpeed;
         protected char _icon;
-        protected Color _raycolor;
+        protected Color _rayColor;
+        protected ConsoleColor _color;
 
         public Vector2 Forward
         {
@@ -33,7 +36,7 @@ namespace HelloWorld
             }
         }
 
-        public Vector2 WorldPositon
+        public Vector2 WorldPosition
         {
             get
             {
@@ -93,7 +96,7 @@ namespace HelloWorld
 
         public Actor(float x, float y, Color raycolor, char icon = ' ')
         {
-            _raycolor = raycolor;
+            _rayColor = raycolor;
             _icon = icon;
             _localTransform = new Matrix3();
             LocalPosition = new Vector2(x, y);
@@ -127,7 +130,7 @@ namespace HelloWorld
 
         public bool CheckCollision(Actor other)
         {
-            float distance = (other.WorldPositon - WorldPositon).Magnitude;
+            float distance = (other.WorldPosition - WorldPosition).Magnitude;
             return distance <= other._collisionRadius + _collisionRadius;
         }
 
@@ -151,5 +154,82 @@ namespace HelloWorld
             _scale = Matrix3.CreateScale(new Vector2(x, y));
         }
 
+        public void UpdateFacing()
+        {
+            if(_velocity.Magnitude <= 0)
+            {
+                return;
+            }
+            Forward = Velocity.Normalized;
+        }
+
+        private void UpdateTransform()
+        {
+            _localTransform = _translation * _rotation * _scale;
+        }
+
+        private void UpdateGlobalTransform()
+        {
+            if(_parent != null)
+            {
+                _globalTransform = _parent._globalTransform * _localTransform;
+            }
+        }
+
+        public virtual void Start()
+        {
+            
+        }
+
+        public virtual void Update(float deltaTime)
+        {
+            UpdateTransform();
+
+            UpdateGlobalTransform();
+
+            UpdateFacing();
+
+            Velocity += Acceleration;
+
+            if(Velocity.Magnitude > MaxSpeed)
+            {
+                Velocity = Velocity.Normalized * MaxSpeed;
+            }
+
+            LocalPosition += _velocity * deltaTime;
+        }
+
+        public virtual void Draw()
+        {
+            //Draws the actor and a line indicating it facing to the raylib window.
+            //Scaled to match console movement
+            Raylib.DrawText(_icon.ToString(), (int)(WorldPosition.X * 32), (int)(WorldPosition.Y * 32), 32, _rayColor);
+            Raylib.DrawLine(
+                (int)(WorldPosition.X * 32),
+                (int)(WorldPosition.Y * 32),
+                (int)((WorldPosition.X + Forward.X) * 32),
+                (int)((WorldPosition.Y + Forward.Y) * 32),
+                Color.WHITE
+            );
+
+            //Changes the color of the console text to be this actors color
+            Console.ForegroundColor = _color;
+
+            //Only draws the actor on the console if it is within the bounds of the window
+            if (WorldPosition.X >= 0 && WorldPosition.X < Console.WindowWidth
+                && WorldPosition.Y >= 0 && WorldPosition.Y < Console.WindowHeight)
+            {
+                Console.SetCursorPosition((int)WorldPosition.X, (int)LocalPosition.Y);
+                Console.Write(_icon);
+            }
+
+            //Reset console text color to be default color
+            Console.ForegroundColor = Game.DefaultColor;
+        }
+
+        public virtual void End()
+        {
+
+        }
     }
 }

@@ -10,28 +10,33 @@ namespace HelloWorld
     {
         private static bool _gameover = false;
 
-        //Run the game
-        public void Run()
+        public static ConsoleColor DefaultColor { get; set; } = ConsoleColor.White;
+
+        public static void SetGameOver(bool value)
         {
-            Start();
+            _gameover = value;
+        }
 
-            while(!_gameover == false && !Raylib.WindowShouldClose())
-            {
-                Update();
+        public static bool GetKeyDown(int key)
+        {
+            return Raylib.IsKeyDown((KeyboardKey)key);
+        }
 
-                Draw();
-
-                while (Console.KeyAvailable)
-                {
-                    Console.ReadKey(true);
-                }
-            }
+        public static bool GetKeyPressed(int key)
+        {
+            return Raylib.IsKeyPressed((KeyboardKey)key);
         }
 
         //Performed once when the game begins
         public void Start()
         {
-            
+            Raylib.InitWindow(1024, 760, "Assessment-2");
+            Raylib.SetTargetFPS(60);
+
+            Console.CursorVisible = false;
+            Console.Title = "Math for Games";
+
+            Actor actor = new Actor(10, 10, Color.RED, '■');
         }
 
         //Repeated until the game ends
@@ -42,13 +47,37 @@ namespace HelloWorld
 
         public void Draw()
         {
+            Raylib.BeginDrawing();
 
+            Raylib.ClearBackground(Color.BLACK);
+
+            Console.Clear();
+
+            Raylib.EndDrawing();
         }
 
         //Performed once when the game ends
         public void End()
         {
             
+        }
+
+        //Run the game
+        public void Run()
+        {
+            Start();
+
+            while (!_gameover == false && !Raylib.WindowShouldClose())
+            {
+                Update();
+
+                Draw();
+
+                while (Console.KeyAvailable)
+                {
+                    Console.ReadKey(true);
+                }
+            }
         }
     }
 }

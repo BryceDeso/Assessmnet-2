@@ -27,6 +27,12 @@ namespace HelloWorld
 
         }
 
+        public Player(float x, float y, Color raycolor, char icon = ' ', ConsoleColor color = ConsoleColor.White) 
+            : base(x, y, raycolor, icon = ' ', color)
+        {
+
+        }
+
         public override void Start()
         {
 
@@ -42,11 +48,6 @@ namespace HelloWorld
             Acceleration = new Vector2(xDirection, yDirection);
 
             base.Update(deltaTime);
-        }
-
-        public override void Draw()
-        {
-          
         }
     }
 }

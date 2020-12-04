@@ -85,11 +85,6 @@ namespace HelloWorld
             }
         }
 
-        public virtual void Start()
-        {
-
-        }
-
         public virtual void Update(float deltaTime)
         { 
             for(int i = 0; i < _actors.Length; i++)

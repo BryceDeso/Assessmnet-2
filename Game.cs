@@ -9,12 +9,95 @@ namespace HelloWorld
     class Game
     {
         private static bool _gameover = false;
+        private static Scene[] _scenes;
+        private static int _currentSceneIndex;
 
         public static ConsoleColor DefaultColor { get; set; } = ConsoleColor.White;
 
         public static void SetGameOver(bool value)
         {
             _gameover = value;
+        }
+
+        public static Scene GetScene(int index)
+        {
+            if (index < 0 || index >= _scenes.Length)
+            {
+                return new Scene();
+            }
+
+            return _scenes[index];
+        }
+
+        public static Scene GetCurrentScene()
+        {
+            return _scenes[_currentSceneIndex];
+        }
+
+        public static int AddScene(Scene scene)
+        {
+            if(scene == null)
+            {
+                return -1;
+            }
+
+            Scene[] newArray = new Scene[_scenes.Length + 1];
+
+            for(int i = 0; i< _scenes.Length; i++)
+            {
+                newArray[i] = _scenes[i];
+            }
+
+            int index = _scenes.Length;
+
+            newArray[index] = scene;
+
+            _scenes = newArray;
+
+            return index;
+        }
+
+        public static bool RemoveScene(Scene scene)
+        {
+            if(scene == null)
+            {
+                return false;
+            }
+            bool sceneRemoved = false;
+
+            Scene[] newArray = new Scene[_scenes.Length - 1];
+
+            int j = 0;
+
+            for(int i = 0; i < _scenes.Length; i++)
+            {
+                if(newArray[i] != scene)
+                {
+                    newArray[j] = _scenes[i];
+                    j++;
+                }
+                else
+                {
+                    sceneRemoved = true;
+                }
+            }
+
+            if (sceneRemoved)
+            {
+                _scenes = newArray;
+            }
+
+            return sceneRemoved;
+        }
+
+        public static void SetCurrentScene(int index)
+        {
+            if(index < 0 || index >= _scenes.Length)
+            {
+                return;
+            }
+
+            _currentSceneIndex = index;
         }
 
         public static bool GetKeyDown(int key)
@@ -36,13 +119,26 @@ namespace HelloWorld
             Console.CursorVisible = false;
             Console.Title = "Math for Games";
 
-            Actor actor = new Actor(10, 10, Color.RED, '■');
+            Scene scene1 = new Scene();            
+
+            //Player player = new Player(10, 10, Color.BLUE, '■', ConsoleColor.Blue);
+            Actor actor = new Actor(10, 10, Color.RED, '■', ConsoleColor.Red);
+
+            //player.AddChildActor(actor);
+
+            //scene1.AddActor(player);
+            scene1.AddActor(actor);
+
+            int startingSceneIndex = 0;
+            startingSceneIndex = AddScene(scene1);
+
+            SetCurrentScene(startingSceneIndex);
         }
 
         //Repeated until the game ends
         public void Update(float deltatime)
         {
-            
+            _scenes[_currentSceneIndex].Update(deltatime);
         }
 
         public void Draw()
@@ -69,7 +165,9 @@ namespace HelloWorld
 
             while (!_gameover == false && !Raylib.WindowShouldClose())
             {
-                Update();
+                float deltaTime = Raylib.GetFrameTime();
+
+                Update(deltaTime);
 
                 Draw();
 

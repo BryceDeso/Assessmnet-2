@@ -103,7 +103,12 @@ namespace HelloWorld
             _velocity = new Vector2();
             _rotation = new Matrix3();
             _scale = new Matrix3();
-            _translation = new Matrix3();
+        }
+
+        public Actor(float x, float y, Color raycolor, char icon = ' ', ConsoleColor color = ConsoleColor.White)
+            : this(x, y, raycolor, icon)
+        {
+            _color = color;
         }
 
         public void LookAt(Vector2 position)

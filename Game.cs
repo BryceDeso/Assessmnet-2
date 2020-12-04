@@ -120,7 +120,7 @@ namespace HelloWorld
         public void Start()
         {
             //Creates a new window for raylib
-            Raylib.InitWindow(1024, 760, "Math For Games");
+            Raylib.InitWindow(470, 820, "Math For Games");
             Raylib.SetTargetFPS(60);
 
             //Set up console window
@@ -131,33 +131,58 @@ namespace HelloWorld
             Scene scene1 = new Scene();
             Scene scene2 = new Scene();
 
-            //Create the actors to add to our scene           
-            Enemy enemy = new Enemy(0, 5, Color.RED, '@', ConsoleColor.Green);
-            Actor actor = new Actor(0, 5, Color.WHITE, '@', ConsoleColor.Red);
-            Player player = new Player(0, 1, Color.BLUE, '@', ConsoleColor.Red);
-            actor.Velocity.X = 1;
-            enemy.Target = player;
-            //player.AddChildActor(enemy);
+            //Create the enemies to add to the scene           
+            Enemy enemy1 = new Enemy(14, 2, Color.GREEN, '#', ConsoleColor.Red);
+            Enemy enemy2 = new Enemy(14, 5, Color.RED, '#', ConsoleColor.Red);
+            Enemy enemy3 = new Enemy(0, 6, Color.GREEN, '#', ConsoleColor.Red);
+            Enemy enemy4 = new Enemy(0, 9, Color.RED, '#', ConsoleColor.Red);
+            Enemy enemy5 = new Enemy(0, 10, Color.GREEN, '#', ConsoleColor.Red);
+            Enemy enemy6 = new Enemy(0, 13, Color.RED, '#', ConsoleColor.Red);
+            Enemy enemy7 = new Enemy(0, 14, Color.GREEN, '#', ConsoleColor.Red);
+            Enemy enemy8 = new Enemy(0, 17, Color.RED, '#', ConsoleColor.Red);
+            Enemy enemy9 = new Enemy(0, 18, Color.GREEN, '#', ConsoleColor.Red);
+            Enemy enemy10 = new Enemy(0, 21, Color.RED, '#', ConsoleColor.Red);
 
-            //Enemy Values
-            enemy.SetScale(1f, 2f);
+            enemy1.SetTranslate(new Vector2(0, 2));
+
+            enemy1.Velocity.X = 2;
+            enemy2.Velocity.X = -2;
+
+            //Create player to add to the scene
+            Player player = new Player(8, 0, Color.BLUE, '@', ConsoleColor.Red);
+
+            //Child enemies to each other to create pattern
+            enemy1.AddChildActor(enemy3);
+            enemy1.AddChildActor(enemy5);
+            enemy1.AddChildActor(enemy5);
+            enemy1.AddChildActor(enemy7);
+            enemy1.AddChildActor(enemy9);
+            enemy2.AddChildActor(enemy4);
+            enemy2.AddChildActor(enemy6);
+            enemy2.AddChildActor(enemy8);
+            enemy2.AddChildActor(enemy10);
 
             //Player Values
-            player.Speed = 5;
+            player.Speed = 2;
             player.SetScale(1f, 2);
             player.SetRotation(1.55f);
-            player.SetTranslate(new Vector2(15, 11));
 
             //Add actors to the scenes
             scene1.AddActor(player);
-            scene1.AddActor(enemy);
-            scene1.AddActor(actor);
-            scene2.AddActor(player);
+            scene1.AddActor(enemy1);
+            scene1.AddActor(enemy2);
+            scene1.AddActor(enemy3);
+            scene1.AddActor(enemy4);
+            scene1.AddActor(enemy5);
+            scene1.AddActor(enemy6);
+            scene1.AddActor(enemy7);
+            scene1.AddActor(enemy8);
+            scene1.AddActor(enemy9);
+            scene1.AddActor(enemy10);
 
             //Sets the starting scene index and adds the scenes to the scenes array
             int startingSceneIndex = 0;
             startingSceneIndex = AddScene(scene1);
-            AddScene(scene2);
 
             //Sets the current scene to be the starting scene index
             SetCurrentScene(startingSceneIndex);
@@ -175,8 +200,6 @@ namespace HelloWorld
             _scenes[_currentSceneIndex].Update(deltaTime);
         }
 
-
-
         //Used to display objects and other info on the screen.
         public void Draw()
         {
@@ -189,7 +212,6 @@ namespace HelloWorld
             Raylib.EndDrawing();
         }
 
-
         //Called when the game ends.
         public void End()
         {
@@ -197,13 +219,11 @@ namespace HelloWorld
                 _scenes[_currentSceneIndex].End();
         }
 
-
         //Handles all of the main game logic including the main game loop.
         public void Run()
         {
             //Call start for all objects in game
             Start();
-
 
             //Loops the game until either the game is set to be over or the window closes
             while (!_gameOver == true && !Raylib.WindowShouldClose())

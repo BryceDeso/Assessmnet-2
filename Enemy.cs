@@ -20,13 +20,13 @@ namespace HelloWorld
         public Enemy(float x, float y, char icon = ' ', ConsoleColor color = ConsoleColor.White)
             : base(x, y, icon, color)
         {
-            _collisionRadius = 5;
+            _collisionRadius = 3;
         }
 
         public Enemy(float x, float y, Color rayColor, char icon = ' ', ConsoleColor color = ConsoleColor.White)
             : base(x, y, rayColor, icon, color)
         {
-            _collisionRadius = 5;
+            _collisionRadius = 3;
         }
 
         public override void OnCollision(Actor other)
@@ -37,6 +37,7 @@ namespace HelloWorld
             }
             base.OnCollision(other);
         }
+
 
         public override void Start()
         {
@@ -50,6 +51,13 @@ namespace HelloWorld
 
         public override void Draw()
         {
+            Raylib.DrawCircleLines(
+               (int)(WorldPosition.X * 32.5f),
+               (int)(WorldPosition.Y * 32.7),
+               _collisionRadius * 6,
+               Color.WHITE
+               );
+
             base.Draw();
         }
 

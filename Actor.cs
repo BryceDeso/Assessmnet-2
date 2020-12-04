@@ -8,14 +8,14 @@ namespace HelloWorld
 {
     public class Actor
     {
-        protected Matrix3 _globalTransform;
-        protected Matrix3 _localTransform;
-        protected Matrix3 _scale;
-        protected Matrix3 _rotation;
-        protected Matrix3 _translation;
-        protected Vector2 _velocity;
-        protected Vector2 _acceleration;
-        protected Actor[] _children;
+        protected Matrix3 _globalTransform = new Matrix3();
+        protected Matrix3 _localTransform = new Matrix3();
+        protected Matrix3 _scale = new Matrix3();
+        protected Matrix3 _rotation = new Matrix3();
+        protected Matrix3 _translation = new Matrix3();
+        protected Vector2 _velocity = new Vector2();       
+        protected Vector2 _acceleration = new Vector2();
+        protected Actor[] _children = new Actor[0];
         protected Actor _parent;
         protected float _collisionRadius;
         protected float _maxSpeed;

@@ -9,7 +9,7 @@ namespace HelloWorld
     class Game
     {
         private static bool _gameover = false;
-        private static Scene[] _scenes;
+        private static Scene[] _scenes = new Scene[0];
         private static int _currentSceneIndex;
 
         public static ConsoleColor DefaultColor { get; set; } = ConsoleColor.White;
@@ -121,18 +121,15 @@ namespace HelloWorld
 
             Scene scene1 = new Scene();            
 
-            //Player player = new Player(10, 10, Color.BLUE, '■', ConsoleColor.Blue);
+            Player player = new Player(10, 15, Color.BLUE, '■', ConsoleColor.Blue);
             Actor actor = new Actor(10, 10, Color.RED, '■', ConsoleColor.Red);
 
-            //player.AddChildActor(actor);
+            player.AddChildActor(actor);
 
-            //scene1.AddActor(player);
+            scene1.AddActor(player);
             scene1.AddActor(actor);
 
-            int startingSceneIndex = 0;
-            startingSceneIndex = AddScene(scene1);
-
-            SetCurrentScene(startingSceneIndex);
+            AddScene(scene1);
         }
 
         //Repeated until the game ends
@@ -149,6 +146,8 @@ namespace HelloWorld
 
             Console.Clear();
 
+            _scenes[_currentSceneIndex].Draw();
+
             Raylib.EndDrawing();
         }
 
@@ -163,7 +162,7 @@ namespace HelloWorld
         {
             Start();
 
-            while (!_gameover == false && !Raylib.WindowShouldClose())
+            while (!_gameover == true && !Raylib.WindowShouldClose())
             {
                 float deltaTime = Raylib.GetFrameTime();
 

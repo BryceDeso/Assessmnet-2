@@ -23,7 +23,7 @@ namespace HelloWorld
 
         public static ConsoleColor DefaultColor { get; set; } = ConsoleColor.White;
 
-        public static void SetGameOver(bool value)
+        public static void SetGameCondition(bool value)
         {
             _gameOver = value;
         }
@@ -120,7 +120,7 @@ namespace HelloWorld
         public void Start()
         {
             //Creates a new window for raylib
-            Raylib.InitWindow(470, 820, "Math For Games");
+            Raylib.InitWindow(470, 900, "Math For Games");
             Raylib.SetTargetFPS(60);
 
             //Set up console window
@@ -132,24 +132,25 @@ namespace HelloWorld
             Scene scene2 = new Scene();
 
             //Create the enemies to add to the scene           
-            Enemy enemy1 = new Enemy(14, 2, Color.GREEN, '#', ConsoleColor.Red);
+            Enemy enemy1 = new Enemy(14, 2, Color.GREEN, '#', ConsoleColor.Green);
             Enemy enemy2 = new Enemy(14, 5, Color.RED, '#', ConsoleColor.Red);
-            Enemy enemy3 = new Enemy(0, 6, Color.GREEN, '#', ConsoleColor.Red);
+            Enemy enemy3 = new Enemy(0, 6, Color.GREEN, '#', ConsoleColor.Green);
             Enemy enemy4 = new Enemy(0, 9, Color.RED, '#', ConsoleColor.Red);
-            Enemy enemy5 = new Enemy(0, 10, Color.GREEN, '#', ConsoleColor.Red);
+            Enemy enemy5 = new Enemy(0, 10, Color.GREEN, '#', ConsoleColor.Green);
             Enemy enemy6 = new Enemy(0, 13, Color.RED, '#', ConsoleColor.Red);
-            Enemy enemy7 = new Enemy(0, 14, Color.GREEN, '#', ConsoleColor.Red);
+            Enemy enemy7 = new Enemy(0, 14, Color.GREEN, '#', ConsoleColor.Green);
             Enemy enemy8 = new Enemy(0, 17, Color.RED, '#', ConsoleColor.Red);
-            Enemy enemy9 = new Enemy(0, 18, Color.GREEN, '#', ConsoleColor.Red);
+            Enemy enemy9 = new Enemy(0, 18, Color.GREEN, '#', ConsoleColor.Green);
             Enemy enemy10 = new Enemy(0, 21, Color.RED, '#', ConsoleColor.Red);
 
-            enemy1.SetTranslate(new Vector2(0, 2));
+            //enemy1.SetTranslate(new Vector2(0, 2));
 
-            enemy1.Velocity.X = 2;
-            enemy2.Velocity.X = -2;
+            //enemy1.Velocity.X = 2;
+            //enemy2.Velocity.X = -2;
 
-            //Create player to add to the scene
+            //Create player and a goal to add to the scene
             Player player = new Player(8, 0, Color.BLUE, '@', ConsoleColor.Red);
+            Goal goal = new Goal(8, 24.5f, Color.LIME, '?', ConsoleColor.Blue);
 
             //Child enemies to each other to create pattern
             enemy1.AddChildActor(enemy3);
@@ -169,6 +170,7 @@ namespace HelloWorld
 
             //Add actors to the scenes
             scene1.AddActor(player);
+            scene1.AddActor(goal);
             scene1.AddActor(enemy1);
             scene1.AddActor(enemy2);
             scene1.AddActor(enemy3);
@@ -215,8 +217,7 @@ namespace HelloWorld
         //Called when the game ends.
         public void End()
         {
-            if (_scenes[_currentSceneIndex].Started)
-                _scenes[_currentSceneIndex].End();
+            Raylib.CloseWindow();
         }
 
         //Handles all of the main game logic including the main game loop.

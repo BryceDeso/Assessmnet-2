@@ -133,7 +133,7 @@ namespace HelloWorld
 
             //Create the enemies to add to the scene           
             Enemy enemy1 = new Enemy(14, 2, Color.GREEN, '#', ConsoleColor.Green);
-            Enemy enemy2 = new Enemy(14, 5, Color.RED, '#', ConsoleColor.Red);
+            Enemy enemy2 = new Enemy(13, 5, Color.RED, '#', ConsoleColor.Red);
             Enemy enemy3 = new Enemy(0, 6, Color.GREEN, '#', ConsoleColor.Green);
             Enemy enemy4 = new Enemy(0, 9, Color.RED, '#', ConsoleColor.Red);
             Enemy enemy5 = new Enemy(0, 10, Color.GREEN, '#', ConsoleColor.Green);
@@ -143,34 +143,50 @@ namespace HelloWorld
             Enemy enemy9 = new Enemy(0, 18, Color.GREEN, '#', ConsoleColor.Green);
             Enemy enemy10 = new Enemy(0, 21, Color.RED, '#', ConsoleColor.Red);
 
-            //enemy1.SetTranslate(new Vector2(0, 2));
+            //Child enemies to each other to create pattern
+            //enemy1.AddChildActor(enemy3);
+            //enemy1.AddChildActor(enemy5);
+            //enemy1.AddChildActor(enemy5);
+            //enemy1.AddChildActor(enemy7);
+            //enemy1.AddChildActor(enemy9);
+            //enemy2.AddChildActor(enemy4);
+            //enemy2.AddChildActor(enemy6);
+            //enemy2.AddChildActor(enemy8);
+            //enemy2.AddChildActor(enemy10);
 
-            //enemy1.Velocity.X = 2;
-            //enemy2.Velocity.X = -2;
+            enemy1.SetTranslate(new Vector2(7.5f, 2));
+
+            enemy1.Velocity.X = 1;
+            enemy2.Velocity.X = 0;
+            enemy3.Velocity.X = 0;
+            enemy4.Velocity.X = 0;
+            enemy5.Velocity.X = 0;
+            enemy6.Velocity.X = 0;
+            enemy7.Velocity.X = 0;
+            enemy8.Velocity.X = 0;
+            enemy9.Velocity.X = 0;
+            enemy10.Velocity.X = 0;
+
 
             //Create player and a goal to add to the scene
-            Player player = new Player(8, 0, Color.BLUE, '@', ConsoleColor.Red);
-            Goal goal = new Goal(8, 24.5f, Color.LIME, '?', ConsoleColor.Blue);
-
-            //Child enemies to each other to create pattern
-            enemy1.AddChildActor(enemy3);
-            enemy1.AddChildActor(enemy5);
-            enemy1.AddChildActor(enemy5);
-            enemy1.AddChildActor(enemy7);
-            enemy1.AddChildActor(enemy9);
-            enemy2.AddChildActor(enemy4);
-            enemy2.AddChildActor(enemy6);
-            enemy2.AddChildActor(enemy8);
-            enemy2.AddChildActor(enemy10);
+            Player player = new Player(7.5f, 0, Color.BLUE, '@', ConsoleColor.Red);
+            Goal goal = new Goal(7.5f, 27, Color.LIME, ' ', ConsoleColor.Blue);
 
             //Player Values
             player.Speed = 2;
             player.SetScale(1f, 2);
             player.SetRotation(1.55f);
 
+            Wall wall1 = new Wall(0, 2, Color.BROWN, '$', ConsoleColor.Cyan);
+            Wall wall2 = new Wall(14, 2, Color.BROWN, '$', ConsoleColor.Cyan);
+
+            //wall1.AddChildActor(wall2);
+
             //Add actors to the scenes
             scene1.AddActor(player);
             scene1.AddActor(goal);
+            scene1.AddActor(wall1);
+            scene1.AddActor(wall2);            
             scene1.AddActor(enemy1);
             scene1.AddActor(enemy2);
             scene1.AddActor(enemy3);
@@ -216,10 +232,10 @@ namespace HelloWorld
 
         //Called when the game ends.
         public void End()
-        {
-            Raylib.CloseWindow();
-        }
+        {           
 
+        }
+        
         //Handles all of the main game logic including the main game loop.
         public void Run()
         {

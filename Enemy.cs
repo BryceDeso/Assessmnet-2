@@ -20,13 +20,13 @@ namespace HelloWorld
         public Enemy(float x, float y, char icon = ' ', ConsoleColor color = ConsoleColor.White)
             : base(x, y, icon, color)
         {
-            _collisionRadius = 3;
+            _collisionRadius = 0.2f;
         }
 
         public Enemy(float x, float y, Color rayColor, char icon = ' ', ConsoleColor color = ConsoleColor.White)
             : base(x, y, rayColor, icon, color)
         {
-            _collisionRadius = 3;
+            _collisionRadius = 0.2f;
         }
 
         public override void OnCollision(Actor other)
@@ -34,10 +34,21 @@ namespace HelloWorld
             if (other is Player)
             {
                 DrawLoseText();
+                Game.SetGameCondition(true);
+            }
+            if(other is Wall)
+            {
+                if(Velocity.X == 1)
+                {
+                    Velocity.X = -1;
+                }
+                if(Velocity.X == -1)
+                {
+                    Velocity.X = 1;
+                }
             }
             base.OnCollision(other);
         }
-
 
         public override void Start()
         {
@@ -61,7 +72,7 @@ namespace HelloWorld
             base.Draw();
         }
 
-        public void DrawLoseText()
+        public static void DrawLoseText()
         {
             Raylib.DrawText("You lose!\nPress esc to quit.", 15, 11, 10, Color.WHITE);
         }

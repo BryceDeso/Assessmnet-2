@@ -11,7 +11,7 @@ namespace HelloWorld
         public Goal(float x, float y, Color raycolor, char icon = ' ', ConsoleColor color = ConsoleColor.White)
             : base(x, y, raycolor, icon, color)
         {
-            _collisionRadius = 5;
+            _collisionRadius = 0.2f;
         }
 
         public override void OnCollision(Actor other)
@@ -32,7 +32,7 @@ namespace HelloWorld
 
         public override void Draw()
         {
-            Raylib.DrawCircle(0, 0, _collisionRadius, Color.GOLD);
+            Raylib.DrawRectangle(0, 840, 600, 50, Color.GOLD);
             Raylib.DrawText("Goal", 180, 850, 40, Color.PURPLE);
             base.Draw();
         }

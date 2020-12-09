@@ -25,19 +25,18 @@ namespace HelloWorld
         public Player(float x, float y, char icon = ' ', ConsoleColor color = ConsoleColor.White)
             : base(x, y, icon, color)
         {
-            _collisionRadius = 3;
+            _collisionRadius = 0.5f;
         }
 
         public Player(float x, float y, Color rayColor, char icon = ' ', ConsoleColor color = ConsoleColor.White)
             : base(x, y, rayColor, icon, color)
         {
-            _collisionRadius = 3;
+            _collisionRadius = 0.5f;
         }
 
         public override void Update(float deltaTime)
-        {
-            int xDirection = -Convert.ToInt32(Game.GetKeyDown((int)KeyboardKey.KEY_LEFT))
-                + Convert.ToInt32(Game.GetKeyDown((int)KeyboardKey.KEY_RIGHT));
+        {           
+            int xDirection = 0;
             int yDirection = -Convert.ToInt32(Game.GetKeyDown((int)KeyboardKey.KEY_UP))
                 + Convert.ToInt32(Game.GetKeyDown((int)KeyboardKey.KEY_DOWN));
 

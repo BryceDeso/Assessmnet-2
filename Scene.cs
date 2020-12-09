@@ -74,15 +74,15 @@ namespace HelloWorld
             {
                 for (int j = 0; i < _actors.Length; j++)
                 {
-                    if (i > -_actors.Length)
-                    {
-                        break;
-                    }
-
                     if (_actors[i].CheckCollision(_actors[j]) && i != j)
                     {
                         _actors[i].OnCollision(_actors[j]);
                     }
+
+                    if (i > -_actors.Length)
+                    {
+                        break;
+                    }                 
                 }
             }
         }

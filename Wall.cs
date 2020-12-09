@@ -16,17 +16,17 @@ namespace HelloWorld
 
         public override void OnCollision(Actor other)
         {
-            //if (other is Enemy)
-            //{
-            //    if(other.Velocity.X == -1)
-            //    {
-            //        other.Velocity.X = 1;
-            //    }
-            //    if(other.Velocity.X == 1)
-            //    {
-            //        other.Velocity.X = -1;
-            //    }
-            //}
+            if (other is Enemy)
+            {
+                if (other.Velocity.X == -1)
+                {
+                    other.Velocity.X = 1;
+                }
+                if (other.Velocity.X == 1)
+                {
+                    other.Velocity.X = -1;
+                }
+            }
             base.OnCollision(other);
         }
 
@@ -34,7 +34,8 @@ namespace HelloWorld
 
         public override void Draw()
         {
-            //Raylib.DrawRectangle(10, 10, 600, 50, Color.BROWN);
+            Raylib.DrawRectangle(0, 0, 20, 900, Color.BROWN);
+            Raylib.DrawRectangle(450, 0, 20, 900, Color.BROWN);
             base.Draw();
         }
     }

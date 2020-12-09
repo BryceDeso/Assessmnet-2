@@ -177,8 +177,8 @@ namespace HelloWorld
             player.SetScale(1f, 2);
             player.SetRotation(1.55f);
 
-            Wall wall1 = new Wall(0, 2, Color.BROWN, '$', ConsoleColor.Cyan);
-            Wall wall2 = new Wall(14, 2, Color.BROWN, '$', ConsoleColor.Cyan);
+            Wall wall1 = new Wall(0, 2, Color.YELLOW, '$', ConsoleColor.Cyan);
+            Wall wall2 = new Wall(14.2f, 2, Color.YELLOW, '$', ConsoleColor.Cyan);
 
             //wall1.AddChildActor(wall2);
 

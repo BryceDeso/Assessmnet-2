@@ -36,17 +36,6 @@ namespace HelloWorld
                 DrawLoseText();
                 Game.SetGameCondition(true);
             }
-            if(other is Wall)
-            {
-                if(Velocity.X == 1)
-                {
-                    Velocity.X = -1;
-                }
-                if(Velocity.X == -1)
-                {
-                    Velocity.X = 1;
-                }
-            }
             base.OnCollision(other);
         }
 

@@ -110,11 +110,11 @@ namespace MathLibrary
         {
             return new Vector5
                 (
-                    matrix.m11 * vector.X + matrix.m12 * vector.Y + matrix.m13 * vector.Z + matrix.m14 * vector.W, matrix.m15 * vector.T,
-                    matrix.m21 * vector.X + matrix.m22 * vector.Y + matrix.m23 * vector.Z + matrix.m24 * vector.W, matrix.m25 * vector.T,
-                    matrix.m31 * vector.X + matrix.m32 * vector.Y + matrix.m33 * vector.Z + matrix.m34 * vector.W, matrix.m35 * vector.T,
-                    matrix.m41 * vector.X + matrix.m42 * vector.Y + matrix.m43 * vector.Z + matrix.m44 * vector.W, matrix.m45 * vector.T,
-                    matrix.m51 * vector.X + matrix.m52 * vector.Y + matrix.m53 * vector.Z + matrix.m54 * vector.W, matrix.m55 * vector.T
+                    matrix.m11 * vector.X + matrix.m12 * vector.Y + matrix.m13 * vector.Z + matrix.m14 * vector.W + matrix.m15 * vector.T,
+                    matrix.m21 * vector.X + matrix.m22 * vector.Y + matrix.m23 * vector.Z + matrix.m24 * vector.W + matrix.m25 * vector.T,
+                    matrix.m31 * vector.X + matrix.m32 * vector.Y + matrix.m33 * vector.Z + matrix.m34 * vector.W + matrix.m35 * vector.T,
+                    matrix.m41 * vector.X + matrix.m42 * vector.Y + matrix.m43 * vector.Z + matrix.m44 * vector.W + matrix.m45 * vector.T,
+                    matrix.m51 * vector.X + matrix.m52 * vector.Y + matrix.m53 * vector.Z + matrix.m54 * vector.W + matrix.m55 * vector.T
                 );
         }
 
@@ -133,59 +133,59 @@ namespace MathLibrary
             return new Matrix5
             (
                 //Row 1, Column 1
-                lhs.m11 * rhs.m11 + lhs.m12 * rhs.m21 + lhs.m13 * rhs.m31 + lhs.m14 * rhs.m41, lhs.m15 * rhs.m51,
+                lhs.m11 * rhs.m11 + lhs.m12 * rhs.m21 + lhs.m13 * rhs.m31 + lhs.m14 * rhs.m41 + lhs.m15 * rhs.m51,
                 //Row 1, Column 2
-                lhs.m11 * rhs.m12 + lhs.m12 * rhs.m22 + lhs.m13 * rhs.m32 + lhs.m14 * rhs.m42, lhs.m15 * rhs.m52,
+                lhs.m11 * rhs.m12 + lhs.m12 * rhs.m22 + lhs.m13 * rhs.m32 + lhs.m14 * rhs.m42 + lhs.m15 * rhs.m52,
                 //Row 1, Column 3
-                lhs.m11 * rhs.m13 + lhs.m12 * rhs.m23 + lhs.m13 * rhs.m33 + lhs.m14 * rhs.m43, lhs.m15 * rhs.m53,
+                lhs.m11 * rhs.m13 + lhs.m12 * rhs.m23 + lhs.m13 * rhs.m33 + lhs.m14 * rhs.m43 + lhs.m15 * rhs.m53,
                 //Row 1, Column 4
-                lhs.m11 * rhs.m14 + lhs.m12 * rhs.m24 + lhs.m13 * rhs.m34 + lhs.m14 * rhs.m44, lhs.m15 * rhs.m54,
+                lhs.m11 * rhs.m14 + lhs.m12 * rhs.m24 + lhs.m13 * rhs.m34 + lhs.m14 * rhs.m44 + lhs.m15 * rhs.m54,
                 //Row 5, Column 5
-                lhs.m11 * rhs.m14 + lhs.m12 * rhs.m24 + lhs.m13 * rhs.m34 + lhs.m14 * rhs.m44, lhs.m15 * rhs.m55,
+                lhs.m11 * rhs.m14 + lhs.m12 * rhs.m24 + lhs.m13 * rhs.m34 + lhs.m14 * rhs.m44 + lhs.m15 * rhs.m55,
 
                 //Row 2, Column 1
-                lhs.m21 * rhs.m11 + lhs.m22 * rhs.m21 + lhs.m23 * rhs.m31 + lhs.m24 * rhs.m41, lhs.m25 * rhs.m51,
+                lhs.m21 * rhs.m11 + lhs.m22 * rhs.m21 + lhs.m23 * rhs.m31 + lhs.m24 * rhs.m41 + lhs.m25 * rhs.m51,
                 //Row 2, Column 2
-                lhs.m21 * rhs.m12 + lhs.m22 * rhs.m22 + lhs.m23 * rhs.m32 + lhs.m24 * rhs.m42, lhs.m25 * rhs.m52,
+                lhs.m21 * rhs.m12 + lhs.m22 * rhs.m22 + lhs.m23 * rhs.m32 + lhs.m24 * rhs.m42 + lhs.m25 * rhs.m52,
                 //Row 2, Column 3
-                lhs.m21 * rhs.m13 + lhs.m22 * rhs.m23 + lhs.m23 * rhs.m33 + lhs.m24 * rhs.m43, lhs.m25 * rhs.m53,
+                lhs.m21 * rhs.m13 + lhs.m22 * rhs.m23 + lhs.m23 * rhs.m33 + lhs.m24 * rhs.m43 + lhs.m25 * rhs.m53,
                 //Row 2, Column 4
-                lhs.m21 * rhs.m14 + lhs.m22 * rhs.m24 + lhs.m23 * rhs.m34 + lhs.m24 * rhs.m44, lhs.m25 * rhs.m54,
+                lhs.m21 * rhs.m14 + lhs.m22 * rhs.m24 + lhs.m23 * rhs.m34 + lhs.m24 * rhs.m44 + lhs.m25 * rhs.m54,
                 //Row 5, Column 5
-                lhs.m21 * rhs.m14 + lhs.m22 * rhs.m24 + lhs.m23 * rhs.m34 + lhs.m24 * rhs.m44, lhs.m25 * rhs.m55,
+                lhs.m21 * rhs.m14 + lhs.m22 * rhs.m24 + lhs.m23 * rhs.m34 + lhs.m24 * rhs.m44 + lhs.m25 * rhs.m55,
 
                 //Row 3, Column 1
-                lhs.m31 * rhs.m11 + lhs.m32 * rhs.m21 + lhs.m33 * rhs.m31 + lhs.m34 * rhs.m41, lhs.m35 * rhs.m51,
+                lhs.m31 * rhs.m11 + lhs.m32 * rhs.m21 + lhs.m33 * rhs.m31 + lhs.m34 * rhs.m41 + lhs.m35 * rhs.m51,
                 //Row 3, Column 2
-                lhs.m31 * rhs.m12 + lhs.m32 * rhs.m22 + lhs.m33 * rhs.m32 + lhs.m34 * rhs.m42, lhs.m35 * rhs.m52,
+                lhs.m31 * rhs.m12 + lhs.m32 * rhs.m22 + lhs.m33 * rhs.m32 + lhs.m34 * rhs.m42 + lhs.m35 * rhs.m52,
                 //Row 3, Column 3
-                lhs.m31 * rhs.m13 + lhs.m32 * rhs.m23 + lhs.m33 * rhs.m33 + lhs.m34 * rhs.m43, lhs.m35 * rhs.m53,
+                lhs.m31 * rhs.m13 + lhs.m32 * rhs.m23 + lhs.m33 * rhs.m33 + lhs.m34 * rhs.m43 + lhs.m35 * rhs.m53,
                 //Row 3, Column 4
-                lhs.m31 * rhs.m14 + lhs.m32 * rhs.m24 + lhs.m33 * rhs.m34 + lhs.m34 * rhs.m44, lhs.m35 * rhs.m54,
+                lhs.m31 * rhs.m14 + lhs.m32 * rhs.m24 + lhs.m33 * rhs.m34 + lhs.m34 * rhs.m44 + lhs.m35 * rhs.m54,
                 //Row 5, Column 5
-                lhs.m31 * rhs.m14 + lhs.m32 * rhs.m24 + lhs.m33 * rhs.m34 + lhs.m34 * rhs.m44, lhs.m35 * rhs.m55,
+                lhs.m31 * rhs.m14 + lhs.m32 * rhs.m24 + lhs.m33 * rhs.m34 + lhs.m34 * rhs.m44 + lhs.m35 * rhs.m55,
 
                 //Row 4, Column 1
-                lhs.m41 * rhs.m11 + lhs.m42 * rhs.m21 + lhs.m43 * rhs.m31 + lhs.m44 * rhs.m41, lhs.m45 * rhs.m51,
+                lhs.m41 * rhs.m11 + lhs.m42 * rhs.m21 + lhs.m43 * rhs.m31 + lhs.m44 * rhs.m41 + lhs.m45 * rhs.m51,
                 //Row 4, Column 2
-                lhs.m41 * rhs.m12 + lhs.m42 * lhs.m22 + lhs.m43 * lhs.m32 + lhs.m44 * rhs.m42, lhs.m45 * rhs.m52,
+                lhs.m41 * rhs.m12 + lhs.m42 * lhs.m22 + lhs.m43 * lhs.m32 + lhs.m44 * rhs.m42 + lhs.m45 * rhs.m52,
                 //Row 4, Column 3
-                lhs.m41 * rhs.m13 + lhs.m42 * rhs.m23 + lhs.m43 * rhs.m33 + lhs.m44 * rhs.m43, lhs.m45 * rhs.m53,
+                lhs.m41 * rhs.m13 + lhs.m42 * rhs.m23 + lhs.m43 * rhs.m33 + lhs.m44 * rhs.m43 + lhs.m45 * rhs.m53,
                 //Row 4, Column 4
-                lhs.m41 * rhs.m14 + lhs.m42 * rhs.m24 + lhs.m43 * rhs.m34 + lhs.m44 * rhs.m44, lhs.m45 * rhs.m54,
+                lhs.m41 * rhs.m14 + lhs.m42 * rhs.m24 + lhs.m43 * rhs.m34 + lhs.m44 * rhs.m44 + lhs.m45 * rhs.m54,
                 //Row 5, Column 5
-                lhs.m41 * rhs.m14 + lhs.m42 * rhs.m24 + lhs.m43 * rhs.m34 + lhs.m34 * rhs.m44, lhs.m45 * rhs.m55,
+                lhs.m41 * rhs.m14 + lhs.m42 * rhs.m24 + lhs.m43 * rhs.m34 + lhs.m34 * rhs.m44 + lhs.m45 * rhs.m55,
 
                 //Row 5, Column 1
-                lhs.m51 * rhs.m11 + lhs.m52 * rhs.m21 + lhs.m53 * rhs.m31 + lhs.m54 * rhs.m41, lhs.m55 * rhs.m51,
+                lhs.m51 * rhs.m11 + lhs.m52 * rhs.m21 + lhs.m53 * rhs.m31 + lhs.m54 * rhs.m41 + lhs.m55 * rhs.m51,
                 //Row 5, Column 2
-                lhs.m51 * rhs.m12 + lhs.m52 * lhs.m22 + lhs.m53 * lhs.m32 + lhs.m54 * rhs.m42, lhs.m55 * rhs.m52,
+                lhs.m51 * rhs.m12 + lhs.m52 * lhs.m22 + lhs.m53 * lhs.m32 + lhs.m54 * rhs.m42 + lhs.m55 * rhs.m52,
                 //Row 5, Column 3
-                lhs.m51 * rhs.m13 + lhs.m52 * rhs.m23 + lhs.m53 * rhs.m33 + lhs.m54 * rhs.m43, lhs.m55 * rhs.m53,
+                lhs.m51 * rhs.m13 + lhs.m52 * rhs.m23 + lhs.m53 * rhs.m33 + lhs.m54 * rhs.m43 + lhs.m55 * rhs.m53,
                 //Row 5, Column 4
-                lhs.m51 * rhs.m14 + lhs.m52 * rhs.m24 + lhs.m53 * rhs.m34 + lhs.m54 * rhs.m44, lhs.m55 * rhs.m54,
+                lhs.m51 * rhs.m14 + lhs.m52 * rhs.m24 + lhs.m53 * rhs.m34 + lhs.m54 * rhs.m44 + lhs.m55 * rhs.m54,
                 //Row 5, Column 5
-                lhs.m51 * rhs.m15 + lhs.m52 * rhs.m25 + lhs.m53 * rhs.m35 + lhs.m54 * rhs.m45, lhs.m55 * rhs.m55
+                lhs.m51 * rhs.m15 + lhs.m52 * rhs.m25 + lhs.m53 * rhs.m35 + lhs.m54 * rhs.m45 + lhs.m55 * rhs.m55
             );
         }
     }

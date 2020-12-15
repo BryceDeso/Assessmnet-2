@@ -478,7 +478,7 @@ Task given: Create a program using C# that meets the specified requirements requ
 
     Name: Matrix4(float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float)
     Type: Constructer
-    Description: Overlaod of Matrix3(), allows chnages to all points in matrix.
+    Description: Overlaod of Matrix4(), allows chnages to all points in matrix.
 
     Name: CreateTranslation(Vector2)
     Type: Matrix4
@@ -511,6 +511,54 @@ Task given: Create a program using C# that meets the specified requirements requ
     Name: operator*(Matrix4, Matrix4)
     Type: Equation
     Description: Mutiplies a Matrix4 by a Matrix4.
+
+#### File: Matrix5
+
+**Attributes**
+
+    Name: m11, m12, m13, m14, m15, m21, m22, m23, m24, m25, m31, m32, m33, m34, m35, m41, m42, m43, m44, m45, m51, m52, m53, m54, m55
+    Type: float
+    Description: Will store numbers to alter matrix.
+
+    Name: Matrix5()
+    Type: Constructer
+    Description: Sets numbers in matrix.
+
+    Name: Matrix5(float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float)
+    Type: Constructer
+    Description: Overlaod of Matrix5(), allows chnages to all points in matrix.
+
+    Name: CreateTranslation(Vector2)
+    Type: Matrix5
+    Description: Sets translation based on cordinates set in the Vector2 in the argument.
+
+    Name: CreateScale(Vector2)
+    Type: Matrix5
+    Description: Sets scale based on input in argument.
+
+    Name: CreateRotationZ(float)
+    Type: Matrix5
+    Description: Rotates object on Z axis
+
+    Name: CreateRotationY(float)
+    Type: Matrix5
+    Description: Rotates object on Y axis.
+
+    Name: CreateRotationX(float)
+    Type: Matrix5
+    Description: Rotates object on X axis.
+
+    Name: operator*(Matrix5, Vector5)
+    Type: Equation
+    Description: Multiplies Matrix5 by Vector5
+
+    Name: operator-(Matrix5, Matrix5)
+    Type: Equation
+    Description: Subtracts Matrix5 by a Matrix5.
+
+    Name: operator*(Matrix5, Matrix5)
+    Type: Equation
+    Description: Mutiplies a Matrix5 by a Matrix5.
 
 #### File: Vector2
 
@@ -740,3 +788,95 @@ Task given: Create a program using C# that meets the specified requirements requ
     Name: operator/(Vector4, float)
     Type: Vector4
     Description: Divides a Vector4 by a float inputed into the argument.
+
+#### File: Vector5
+
+**Attributes**
+
+    Name: _x
+    Type: float
+    Description: holds float that will translate to the x axis.
+
+    Name: _y
+    Type: float
+    Description: Holds float that will translate to the y axis.
+
+    Name: _z
+    Type: float
+    Description: Holds float that will translate to the z axis.
+
+    Name: _w
+    Type: float
+    Description: Holds float that will translate to the w axis.
+
+    Name: _t
+    Type: float
+    Description: Holds float that will translate to the t axis.
+
+    Name: X
+    Type: float
+    Description: Property that gets and sets _x.
+
+    Name: Y
+    Type: float
+    Description: Property that gets and sets _y.
+
+    Name: Z
+    Type: float
+    Description: Property that gets and sets _z.
+
+    Name: W
+    Type: float
+    Description: Property that gets and sets _w.
+
+    Name: T
+    Type: float
+    Description: Property that gets and sets _t.
+
+    Name: Magnitude
+    Type: float
+    Description: Gets the distance between the vectors origin and endpoint.
+
+    Name: Normalized
+    Type: Vector5
+    Description: Makes sure your vectors dont add when moving an actor.
+
+    Name: Vector5
+    Type: Cosntructer
+    Description: Sets all axis to 0.
+
+    Name: Vector5(float, float, float, float, float)
+    Type: Constructer
+    Description: Overload of Vector5(), allows you to set all axis by inputing into argument.
+
+    Name: CrossProduct(Vector5, Vector5)
+    Type: Vector5
+    Description: finds vector perpindicualr to two other vectors.
+
+    Name: Normalize(Vector5)
+    Type: Vector5
+    Description: Normalizes vector inputed into argument.
+
+    Name: DotProduct(Vector5, Vector5)
+    Type: float
+    Description: Takes two equal length numbers an makes them one.
+
+    Name: operator+(Vector5, Vector5)
+    Type: Vector5
+    Description: Adds left hand side by right hand side
+
+    Name: operator-(Vector5, Vector5)
+    Type: Vector4
+    Description: Subtracts left hand side by right hand side
+
+    Name: operator*(Vector5, float)
+    Type: Vector5
+    Description: Multipies a Vector5 by a float.
+
+    Name: operator*(flaot, Vector5)
+    Type: Vector5
+    Description: Multipies a float by a Vector5.
+
+    Name: operator/(Vector5, float)
+    Type: Vector5
+    Description: Divides a Vector5 by a float inputed into the argument.

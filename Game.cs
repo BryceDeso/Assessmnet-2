@@ -154,7 +154,7 @@ namespace HelloWorld
             //enemy2.AddChildActor(enemy8);
             //enemy2.AddChildActor(enemy10);
 
-            enemy1.SetTranslate(new Vector2(7.5f, 2));
+            enemy1.SetTranslate(new Vector2(0, 2));
 
             enemy1.Velocity.X = 1;
             enemy2.Velocity.X = 0;

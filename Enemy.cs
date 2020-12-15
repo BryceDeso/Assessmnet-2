@@ -63,7 +63,7 @@ namespace HelloWorld
 
         public static void DrawLoseText()
         {
-            Raylib.DrawText("You lose!\nPress esc to quit.", 15, 11, 10, Color.WHITE);
+            Raylib.DrawText("You lose!\nPress the X on the console window to quit.", 15, 11, 10, Color.WHITE);
         }
 
         public override void End()

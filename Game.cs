@@ -120,7 +120,7 @@ namespace HelloWorld
         public void Start()
         {
             //Creates a new window for raylib
-            Raylib.InitWindow(470, 900, "Math For Games");
+            Raylib.InitWindow(470, 550, "Math For Games");
             Raylib.SetTargetFPS(60);
 
             //Set up console window
@@ -132,61 +132,93 @@ namespace HelloWorld
             Scene scene2 = new Scene();
 
             //Create the enemies to add to the scene           
-            Enemy enemy1 = new Enemy(14, 2, Color.GREEN, '#', ConsoleColor.Green);
+            Enemy enemy1 = new Enemy(0, 2, Color.GREEN, '#', ConsoleColor.Green);
+            Enemy enemy6 = new Enemy(-5, 0, Color.GREEN, '#', ConsoleColor.Green);
+            Enemy enemy11 = new Enemy(-10, 0, Color.GREEN, '#', ConsoleColor.Green);
+            Enemy enemy16 = new Enemy(-15, 0, Color.GREEN, '#', ConsoleColor.Green);
+            Enemy enemy21 = new Enemy(-20, 0, Color.GREEN, '#', ConsoleColor.Green);
+            Enemy enemy26 = new Enemy(-25, 0, Color.GREEN, '#', ConsoleColor.Green);
+
             Enemy enemy2 = new Enemy(13, 5, Color.RED, '#', ConsoleColor.Red);
-            Enemy enemy3 = new Enemy(0, 6, Color.GREEN, '#', ConsoleColor.Green);
-            Enemy enemy4 = new Enemy(0, 9, Color.RED, '#', ConsoleColor.Red);
-            Enemy enemy5 = new Enemy(0, 10, Color.GREEN, '#', ConsoleColor.Green);
-            Enemy enemy6 = new Enemy(0, 13, Color.RED, '#', ConsoleColor.Red);
-            Enemy enemy7 = new Enemy(0, 14, Color.GREEN, '#', ConsoleColor.Green);
-            Enemy enemy8 = new Enemy(0, 17, Color.RED, '#', ConsoleColor.Red);
-            Enemy enemy9 = new Enemy(0, 18, Color.GREEN, '#', ConsoleColor.Green);
-            Enemy enemy10 = new Enemy(0, 21, Color.RED, '#', ConsoleColor.Red);
+            Enemy enemy7 = new Enemy(5, 0, Color.RED, '#', ConsoleColor.Red);
+            Enemy enemy12 = new Enemy(10, 0, Color.RED, '#', ConsoleColor.Red);
+            Enemy enemy17 = new Enemy(15, 0, Color.RED, '#', ConsoleColor.Red);
+            Enemy enemy22 = new Enemy(20, 0, Color.RED, '#', ConsoleColor.Red);
+            Enemy enemy27 = new Enemy(25, 0, Color.RED, '#', ConsoleColor.Red);
+
+            Enemy enemy3 = new Enemy(0, 8, Color.YELLOW, '#', ConsoleColor.Yellow);
+            Enemy enemy8 = new Enemy(-5, 0, Color.YELLOW, '#', ConsoleColor.Yellow);
+            Enemy enemy13 = new Enemy(-10, 0, Color.YELLOW, '#', ConsoleColor.Yellow);
+            Enemy enemy18 = new Enemy(-15, 0, Color.YELLOW, '#', ConsoleColor.Yellow);
+            Enemy enemy23 = new Enemy(-20, 0, Color.YELLOW, '#', ConsoleColor.Yellow);
+            Enemy enemy28 = new Enemy(-25, 0, Color.YELLOW, '#', ConsoleColor.Yellow);
+
+            Enemy enemy4 = new Enemy(13, 11, Color.GRAY, '#', ConsoleColor.Gray);
+            Enemy enemy9 = new Enemy(5, 0, Color.GRAY, '#', ConsoleColor.Gray);
+            Enemy enemy14 = new Enemy(10, 0, Color.GRAY, '#', ConsoleColor.Gray);
+            Enemy enemy19 = new Enemy(15, 0, Color.GRAY, '#', ConsoleColor.Gray);
+            Enemy enemy24 = new Enemy(20, 0, Color.GRAY, '#', ConsoleColor.Gray);
+            Enemy enemy29 = new Enemy(25, 0, Color.GRAY, '#', ConsoleColor.Gray);
+
+            Enemy enemy5 = new Enemy(0, 14, Color.WHITE, '#', ConsoleColor.White);
+            Enemy enemy10 = new Enemy(-5, 0, Color.WHITE, '#', ConsoleColor.White);
+            Enemy enemy15 = new Enemy(-10, 0, Color.WHITE, '#', ConsoleColor.White);
+            Enemy enemy20 = new Enemy(-15, 0, Color.WHITE, '#', ConsoleColor.White);
+            Enemy enemy25 = new Enemy(-20, 0, Color.WHITE, '#', ConsoleColor.White);
+            Enemy enemy30 = new Enemy(-25, 0, Color.WHITE, '#', ConsoleColor.White);
 
             //Child enemies to each other to create pattern
-            //enemy1.AddChildActor(enemy3);
-            //enemy1.AddChildActor(enemy5);
-            //enemy1.AddChildActor(enemy5);
-            //enemy1.AddChildActor(enemy7);
-            //enemy1.AddChildActor(enemy9);
-            //enemy2.AddChildActor(enemy4);
-            //enemy2.AddChildActor(enemy6);
-            //enemy2.AddChildActor(enemy8);
-            //enemy2.AddChildActor(enemy10);
+            enemy1.AddChildActor(enemy6);
+            enemy1.AddChildActor(enemy11);
+            enemy1.AddChildActor(enemy16);
+            enemy1.AddChildActor(enemy21);
+            enemy1.AddChildActor(enemy26);
+
+            enemy2.AddChildActor(enemy7);
+            enemy2.AddChildActor(enemy12);
+            enemy2.AddChildActor(enemy17);
+            enemy2.AddChildActor(enemy22);
+            enemy2.AddChildActor(enemy27);
+
+            enemy3.AddChildActor(enemy8);
+            enemy3.AddChildActor(enemy13);
+            enemy3.AddChildActor(enemy18);
+            enemy3.AddChildActor(enemy23);
+            enemy3.AddChildActor(enemy28);
+
+            enemy4.AddChildActor(enemy9);
+            enemy4.AddChildActor(enemy14);
+            enemy4.AddChildActor(enemy19);
+            enemy4.AddChildActor(enemy24);
+            enemy4.AddChildActor(enemy29);
+
+            enemy5.AddChildActor(enemy10);
+            enemy5.AddChildActor(enemy15);
+            enemy5.AddChildActor(enemy20);
+            enemy5.AddChildActor(enemy25);
+            enemy5.AddChildActor(enemy30);
+
 
             enemy1.SetTranslate(new Vector2(0, 2));
 
             enemy1.Velocity.X = 1;
-            enemy2.Velocity.X = 0;
-            enemy3.Velocity.X = 0;
-            enemy4.Velocity.X = 0;
-            enemy5.Velocity.X = 0;
-            enemy6.Velocity.X = 0;
-            enemy7.Velocity.X = 0;
-            enemy8.Velocity.X = 0;
-            enemy9.Velocity.X = 0;
-            enemy10.Velocity.X = 0;
-
+            enemy2.Velocity.X = -1;
+            enemy3.Velocity.X = 1;
+            enemy4.Velocity.X = -1;
+            enemy5.Velocity.X = 1;
 
             //Create player and a goal to add to the scene
             Player player = new Player(7.5f, 0, Color.BLUE, '@', ConsoleColor.Red);
-            Goal goal = new Goal(7.5f, 27, Color.LIME, ' ', ConsoleColor.Blue);
+            Goal goal = new Goal(7.5f, 16, Color.BROWN, ' ', ConsoleColor.Blue);
 
             //Player Values
             player.Speed = 2;
             player.SetScale(1f, 2);
             player.SetRotation(1.55f);
 
-            Wall wall1 = new Wall(0, 2, Color.YELLOW, '$', ConsoleColor.Cyan);
-            Wall wall2 = new Wall(14.2f, 2, Color.YELLOW, '$', ConsoleColor.Cyan);
-
-            //wall1.AddChildActor(wall2);
-
             //Add actors to the scenes
             scene1.AddActor(player);
-            scene1.AddActor(goal);
-            scene1.AddActor(wall1);
-            scene1.AddActor(wall2);            
+            scene1.AddActor(goal);        
             scene1.AddActor(enemy1);
             scene1.AddActor(enemy2);
             scene1.AddActor(enemy3);
@@ -197,6 +229,27 @@ namespace HelloWorld
             scene1.AddActor(enemy8);
             scene1.AddActor(enemy9);
             scene1.AddActor(enemy10);
+            scene1.AddActor(enemy11);
+            scene1.AddActor(enemy12);
+            scene1.AddActor(enemy13);
+            scene1.AddActor(enemy14);
+            scene1.AddActor(enemy15);
+            scene1.AddActor(enemy16);
+            scene1.AddActor(enemy17);
+            scene1.AddActor(enemy18);
+            scene1.AddActor(enemy19);
+            scene1.AddActor(enemy20);
+            scene1.AddActor(enemy21);
+            scene1.AddActor(enemy22);
+            scene1.AddActor(enemy23);
+            scene1.AddActor(enemy24);
+            scene1.AddActor(enemy25);
+            scene1.AddActor(enemy26);
+            scene1.AddActor(enemy27);
+            scene1.AddActor(enemy28);
+            scene1.AddActor(enemy29);
+            scene1.AddActor(enemy30);
+
 
             //Sets the starting scene index and adds the scenes to the scenes array
             int startingSceneIndex = 0;

@@ -27,13 +27,13 @@ namespace HelloWorld
 
         public void DrawWinText()
         {
-            Raylib.DrawText("You win!\nPress esc to quit!", 3, 6, 4, Color.ORANGE);
+            Raylib.DrawText("You win!\nPress the X on the console window to quit!", 3, 6, 4, Color.ORANGE);
         }
 
         public override void Draw()
         {
-            Raylib.DrawRectangle(0, 840, 600, 50, Color.GOLD);
-            Raylib.DrawText("Goal", 180, 850, 40, Color.PURPLE);
+            Raylib.DrawRectangle(0, 500, 800, 50, Color.GOLD);
+            Raylib.DrawText("Goal", 180, 500, 40, Color.PURPLE);
             base.Draw();
         }
     }

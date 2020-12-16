@@ -202,10 +202,10 @@ namespace HelloWorld
             enemy1.SetTranslate(new Vector2(0, 2));
 
             enemy1.Velocity.X = 1;
-            enemy2.Velocity.X = -1;
+            enemy2.Velocity.X = -1.5f;
             enemy3.Velocity.X = 1;
             enemy4.Velocity.X = -1;
-            enemy5.Velocity.X = 1;
+            enemy5.Velocity.X = 1.5f;
 
             //Create player and a goal to add to the scene
             Player player = new Player(7.5f, 0, Color.BLUE, '@', ConsoleColor.Red);
